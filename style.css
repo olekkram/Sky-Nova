@@ -1,0 +1,843 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Work+Sans:wght@300;400;500&display=swap');
+
+:root {
+    --beige-light: #fef9f0;
+    --beige-cream: #f5e6d3;
+    --beige-warm: #f9d689;
+    --blue-accent: #8fb6ff;
+    --blue-dark: #2b4c7e;
+    --text-dark: #1a1a1a;
+    --text-gray: #666;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+  color: #FFD700;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #FFF4A3;
+  font-size: 1.2em; 
+}
+
+a.italic-link {
+  font-style: italic;
+}
+
+::selection {
+  background-color: #FFD700;
+  color: var(--blue-dark);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    background: var(--beige-light);
+    color: var(--text-dark);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* === HERO SECTION === */
+.hero {
+    position: relative;
+    height: 100vh;
+    background: linear-gradient(135deg, #f5e6d3 0%, #ffc857 50%, #f9d689 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.stars-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    animation: twinkle 4s ease-in-out infinite;
+}
+
+.star.blue {
+    background: var(--blue-accent);
+}
+
+.star.white {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.35; }
+    50% { opacity: 0.8; }
+}
+
+.hero-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(254, 249, 240, 0.1) 0%, rgba(249, 214, 137, 0.3) 100%);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    animation: fadeInUp 1.2s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 7rem;
+    font-weight: 300;
+    letter-spacing: 16px;
+    color: var(--blue-dark);
+    margin-bottom: 20px;
+    text-shadow: 0 2px 30px rgba(143, 182, 255, 0.3);
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: var(--blue-dark);
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+    font-weight: 300;
+}
+
+.hero-tagline {
+    font-size: 1.1rem;
+    color: rgba(43, 76, 126, 0.8);
+    margin-bottom: 50px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    animation: fadeIn 1.5s ease-out 0.3s both;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.btn {
+    padding: 16px 45px;
+    font-size: 1rem;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 2px;
+    font-weight: 400;
+}
+
+.btn-primary {
+    background: var(--blue-dark);
+    color: #FFD700;
+    border: 2px solid var(#FFD700;);
+}
+
+.btn-primary:hover {
+    background: transparent;
+    border: 2px solid var(--blue-dark);
+    color: var(--blue-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(143, 182, 255, 0.4);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--blue-dark);
+    border: 2px solid var(--blue-dark);
+}
+
+.btn-outline:hover {
+    background: var(--blue-dark);
+    color: #FFD700;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(43, 76, 126, 0.3);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+.scroll-text {
+    font-size: 0.9rem;
+    color: var(--blue-dark);
+    letter-spacing: 2px;
+    opacity: 0.8;
+}
+
+.arrow-down {
+    width: 24px;
+    height: 24px;
+    border-right: 2px solid var(--blue-dark);
+    border-bottom: 2px solid var(--blue-dark);
+    transform: rotate(45deg);
+}
+
+/* === SECTIONS === */
+section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 40px;
+}
+
+.hero,
+#the-city,
+#contact {
+    max-width: 100%;
+}
+
+h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: var(--blue-dark);
+    margin-bottom: 70px;
+    text-align: center;
+    letter-spacing: 4px;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 2px;
+    background: var(--blue-accent);
+    margin: 15px auto 0;
+}
+
+/* === ABOUT === */
+.about-content {
+    max-width: 600px;
+    margin-left: 0;
+}
+
+.about-content p {
+    font-size: 1.2rem;
+    line-height: 2;
+    margin-bottom: 25px;
+    color: var(--text-gray);
+    opacity: 0;
+    animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.about-content p:nth-child(1) { animation-delay: 0.2s; }
+.about-content p:nth-child(2) { animation-delay: 0.4s; }
+.about-content p:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* === MUSIC === */
+  .music-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+  .track-card {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s ease;
+}
+
+  .track-card:hover {
+    transform: scale(1.03);
+}
+
+  .track-image {
+    width: 100%;
+    height: 100%;
+    background-image: url('https://i.postimg.cc/7ZqQ7xYJ/Edge-Of- You.png');
+    background-size: cover;
+    background-position: center;
+    transition: filter 0.4s ease;
+    filter: grayscale(100%);
+}
+
+  .track-2 { 
+  background-image: url('https://i.postimg.cc/tCZZqTPL/Golden-From-Day-One.png');
+    background-size: cover;
+    background-position: center;
+  filter: grayscale(100%) brightness(1);
+}
+  .track-3 { 
+ background: linear-gradient(135deg, #667eea       0%, #8fb6ff 100%);
+  filter: grayscale(100%) brightness(0.6);
+}
+  .track-4 { 
+ background: linear-gradient(135deg, #f5e6d3        0%,    #f9d689 100%);
+  filter: grayscale(100%) brightness(0.6);
+}
+
+  .track-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.4s ease;
+}
+
+  .track-card:hover .track-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+  .play-button {
+    width: 70px;
+    height: 70px;
+    border: 3px solid white;
+    border-radius: 50%;
+    position: relative;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.4s ease;
+    margin-bottom: 20px;
+}
+
+  .track-card:hover .play-button {
+    opacity: 1;
+    transform: scale(1);
+}
+
+  .play-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-left: 20px solid white;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+}
+
+  .track-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: white;
+    font-weight: 400;
+    letter-spacing: 2px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease 0.1s;
+}
+
+  .track-card:hover .track-title {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+  /* Чорно-біле для coming soon */
+    .coming-soon .track-image {
+    filter: grayscale(100%) brightness(0,7);
+}
+
+  /* Сховати play кнопку */
+    .coming-soon .play-button {
+    display: none;
+}
+
+  /* Текст Coming Soon */
+    .coming-soon-text {
+    font-size: 1rem;
+    color: white;
+    letter-spacing: 3px;
+    margin-top: 10px;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease 0.1s;
+}
+
+  /* Не показати Coming Soon без hover */
+    .coming-soon .track-overlay {
+  background: rgba(0, 0, 0, 0,);
+}
+    .coming-soon .track-title,
+    .coming-soon .coming-soon-text {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+  /* Прибрати hover ефект */
+    .coming-soon:hover .track-overlay {
+    background: rgba(0, 0, 0, 0.5);
+}
+    .coming-soon:hover .track-title;
+    .coming-soon:hover .coming-soon-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+  /* Вимкнути курсор */
+    .coming-soon {
+    cursor: default;
+}
+
+/* === BAND MEMBERS === */
+  .band-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 50px;
+}
+
+  .member-card {
+    text-align: center;
+    transition: transform 0.4s ease;
+}
+
+  .member-card:hover {
+    transform: translateY(-10px);
+}
+
+  .member-photo {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 25px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c4c4c4 0%, #888 100%);
+    filter: grayscale(100%);
+    transition: filter 0.5s ease;
+}
+  .member-link .member-photo {
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.6),
+              0 10px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+  .member-card:hover .member-photo {
+    filter: grayscale(0%);
+}
+
+  /* Основа */
+    .member-1 { background-image: url('https://i.postimg.cc/tT7GJ9GY/Sascha-git.jpg');
+    background-size: cover;
+    background-position: 50% 40%; }
+    .member-2 {
+ background-image:  url('https://i.postimg.cc/ncv2V6x1/Kirill.png');
+ background-size: cover;
+ background-position: center;}
+    .member-3 { background-image: url('https://i.postimg.cc/bryj34Q2/Daniel.png');
+    background-size: cover;
+    background-position: 50% 20%;
+    background-repeat: no repeat;
+}
+    .member-4 { background-image: url('https://i.postimg.cc/mkQFyWZ8/Dohan.jpg');
+    background-size: cover;
+    background-position: 50% 20%; }
+    .member-5 { 
+    background-image: url('https://i.postimg.cc/5N7YH7kw/Strat-cerno-belyj.jpg');
+    background-size: cover;
+    background-position: center;
+}
+  /* Школа */
+    .school-1 { background-image: url('https://i.postimg.cc/vmVSNDys/Sascha-Bass.jpg');
+    background-size: cover;
+    background-position: 50% 40%; }
+    .school-2 {
+ background-image:  url('https://i.postimg.cc/ncv2V6x1/Kirill.png');
+ background-size: cover;
+ background-position: center;}
+    .school-3 { background-image: url('https://i.postimg.cc/pdjZ6TZk/Strat.png');
+    background-size: cover;
+    background-position: center; }
+    .school-4 { background-image: url('https://i.postimg.cc/90xM701M/Drums.jpg');
+    background-size: cover;
+    background-position: center; }
+
+  .member-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    font-weight: 400;
+}
+
+  .member-card p {
+    font-size: 1rem;
+    color: var(--text-gray);
+    letter-spacing: 1px;
+}
+
+  .member-link {
+    text-decoration: none;
+    color: #FFD700 !important;
+    display: block;
+}
+
+/* === SCHOOL LINEUP === */
+  #school-lineup {
+    background: linear-gradient(to bottom, rgba(143, 182, 255, 0.08) 0%, rgba(143, 182, 255, 0.03) 100%);
+    padding: 120px 40px;
+}
+
+  .section-subtitle {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--text-gray);
+    margin-top: -50px;
+    margin-bottom: 60px;
+    letter-spacing: 2px;
+    font-style: italic;
+}
+
+/* === THE CITY === */
+  #the-city {
+    background: linear-gradient(135deg, #2b4c7e 0%, #1a2f4a 100%);
+    color: white;
+    padding: 150px 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+  #the-city::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(143, 182, 255, 0.15) 0%, transparent 70%);
+    top: -150px;
+    right: -150px;
+    animation: pulse 8s ease-in-out infinite;
+}
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+  .city-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+  #the-city h2 {
+    color: white;
+}
+
+  #the-city h2::after {
+    background: white;
+}
+
+  .city-content p {
+    font-size: 1.6rem;
+    line-height: 2.5;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+  .city-content p:nth-child(2) { animation-delay:   0.2s; }
+  .city-content p:nth-child(3) { animation-delay: 0.4s; }
+  .city-content p:nth-child(4) { animation-delay: 0.6s; }
+  .city-content p:nth-child(5) { animation-delay: 0.8s; }
+  .city-content p:nth-child(6) { animation-delay: 1s; }
+  .city-content p:nth-child(7) { animation-delay: 1.2s; }
+
+  .city-final {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-style: italic;
+    margin-top: 40px;
+}
+
+/* === SHOWS === */
+  .shows-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+  .show-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 30px 40px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: all 0.4s ease;
+}
+  .show-card:hover {
+    transform: translateX(15px);
+    box-shadow: 0 8px 30px rgba(143, 182, 255, 0.25);
+}
+  .show-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    color: var(--blue-accent);
+    font-weight: 500;
+    min-width: 130px;
+}
+  .show-city {
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    font-weight: 500;
+    flex: 1;
+    text-align: center;
+}
+  .show-band {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    min-width: 100px;
+    text-align: right;
+}
+
+/* === THANKS ===*/
+  .thanks-list {
+    margin-top: 40px;
+}
+  .thanks-list p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+/* === LOGOS ===*/
+  /* Наше Лого */
+    .our-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-collum: 2;
+}
+    .our-logo img {
+    max-width: 400px !important;
+    max-height: 200px !important;
+    filter: grayscale(0%) !important;
+    opacity: 1 !important;
+}
+  /* Спонсоры */
+    .footer-sponsors {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 60px;
+    flex-wrap: nowrap;
+    opacity: 1;
+}
+    .footer-sponsors img {
+    max-width: 300px;
+    max-height: 150px;
+    object-fit: contain;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+}
+    .footer-sponsors a img {
+    opacity: 0.5;
+}
+    .footer-sponsors img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+    .footer-sponsors a:first-of-type {
+    justify-self: end;   /* ліворуч від центру */
+}
+    .footer-sponsors a:last-of-type {
+    justify-self: start;   /* праворуч від центру */
+}
+
+/* === CONTACT === */
+  #contact {
+    background: var(--beige-cream);
+    padding: 120px 40px;
+    text-align: center;
+}
+
+  .socials {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 50px;
+}
+
+  .social-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+  .social-item:hover {
+    transform: translateY(-8px);
+}
+
+  .social-icon {
+    font-size: 2.5rem;
+}
+
+  .social-label {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: var(--text-gray);
+}
+
+  .contact-message {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--blue-dark);
+    font-style: italic;
+    margin-top: 30px;
+}
+
+/* === RESPONSIVE === */
+  @media (max-width: 768px) {
+    .hero-title {
+        font-size: 4rem;
+        letter-spacing: 8px;
+    }
+    
+    h2 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        padding: 0 20px;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+    
+    .show-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .show-date,
+    .show-city,
+    .show-venue {
+        min-width: auto;
+        text-align: center;
+    }
+    
+    .socials {
+        gap: 30px;
+    }
+    
+    .city-content p {
+        font-size: 1.3rem;
+    }
+}
+
+  @media (max-width: 480px) {
+    .hero-title {
+        font-size: 3rem;
+        letter-spacing: 4px;
+    }
+    
+    section {
+        padding: 80px 20px;
+    }
+}
+
+/* === ЗОЛОТИЙ SCROLLBAR === */
+  /* Для Chrome, Edge, Safari */
+    ::-webkit-scrollbar {
+    width: 10px;
+}
+
+    ::-webkit-scrollbar-track {
+    background: var(--beige-cream);
+}
+
+    ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, gold, #ffc857);
+    border-radius: 10px;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+    background: gold;
+}
+
+  /* Для Firefox */
+    * {
+    scrollbar-width: thin;
+    scrollbar-color: gold var(--beige-cream);
+}
