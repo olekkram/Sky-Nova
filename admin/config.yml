@@ -1,15 +1,15 @@
 backend:
   name: github
-  repo: olekkram/Sky-Nova  # замени на свои данные
-  branch: main # или master, где у тебя код
+  repo: olekkram/Sky-Nova
+  branch: main
 
-media_folder: "images"      # папка для новых картинок
-public_folder: "/images"    # путь для HTML
+media_folder: "images"
+public_folder: "/images"
 
 collections:
   - name: "pages"
     label: "Страницы"
-    folder: ""             # корень сайта
+    folder: ""             
     create: false
     editable_files: true
     files:
