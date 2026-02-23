@@ -1,0 +1,20 @@
+backend:
+  name: github
+  repo: olekkram/Sky-Nova  # замени на свои данные
+  branch: main # или master, где у тебя код
+
+media_folder: "images"      # папка для новых картинок
+public_folder: "/images"    # путь для HTML
+
+collections:
+  - name: "pages"
+    label: "Страницы"
+    folder: ""             # корень сайта
+    create: false
+    editable_files: true
+    files:
+      - file: "index.html"
+        label: "Главная страница"
+        name: "index"
+        fields:
+          - {label: "Вступительный текст", name: "intro", widget: "string"}
